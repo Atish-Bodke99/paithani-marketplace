@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Shop - Paithani Marketplace</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+    <style>
+        body {
+            @apply bg-[#f1f3f6] font-roboto overflow-x-hidden;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            @apply max-w-3xl mx-auto px-5 py-5;
+        }
+
+        .header {
+            @apply bg-[#2874f0] text-white p-4 text-center shadow-md rounded-b-lg mb-6 animate__animated animate__fadeInDown;
+            animation-duration: 1s;
+        }
+
+        .header h1 {
+            @apply text-2xl font-medium;
+            margin: 0;
+        }
+
+        .content {
+            @apply bg-white rounded-xl shadow-lg p-6 animate__animated animate__fadeIn relative;
+            animation-duration: 1s;
+            overflow: hidden; /* Ensure animation stays within bounds */
+        }
+
+        .content::before {
+            content: '';
+            @apply absolute top-0 left-0 w-full h-full opacity-15 -z-10;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#d4a017" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>') repeat;
+            animation: paithaniWeave 8s ease-in-out infinite; /* Subtle weaving animation */
+        }
+
+        @keyframes paithaniWeave {
+            0% { background-position: 0 0; }
+            50% { background-position: 20px 20px; }
+            100% { background-position: 0 0; }
+        }
+
+        .form-header {
+            @apply text-center mb-6 text-[#d4a017] font-pacifico text-4xl font-normal;
+            text-shadow: 0 3px 6px rgba(212, 160, 23, 0.4);
+            animation: bounceIn 1.5s ease-in-out;
+        }
+
+        .form-group {
+            @apply mb-4;
+        }
+
+        .label {
+            @apply text-gray-800 text-base mb-2 block;
+        }
+
+        .input-field {
+            @apply w-full p-3 border border-gray-300 rounded-md text-base transition-colors duration-300 focus:border-[#d4a017] focus:outline-none focus:shadow-[0_0_6px_rgba(212,160,23,0.3)] relative z-10;
+        }
+
+        .input-field:focus {
+            border-color: #d4a017;
+            outline: none;
+            box-shadow: 0 0 6px rgba(212, 160, 23, 0.3);
+        }
+
+        .error {
+            @apply text-red-500 text-sm mt-2;
+        }
+
+        .btn {
+            @apply bg-gradient-to-r from-[#d4a017] to-[#ffd700] text-white px-6 py-4 rounded-lg text-base font-semibold transition-transform duration-200 hover:translate-y-[-3px] hover:shadow-2xl hover:from-[#c68e17] hover:to-[#e6b800] inline-block relative z-10;
+        }
+
+        .btn::before {
+            content: '';
+            @apply absolute top-0 left-0 w-full h-full opacity-15 -z-10;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>') repeat;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 18px rgba(212, 160, 23, 0.4);
+        }
+
+        .btn-cancel {
+            @apply bg-gradient-to-r from-[#a9a9a9] to-[#d3d3d3] text-gray-700 ml-6;
+        }
+
+        .btn-cancel:hover {
+            @apply shadow-md shadow-gray-400;
+            background: linear-gradient(to right, #808080, #b0b0b0);
+            box-shadow: 0 4px 10px rgba(169, 169, 169, 0.3);
+        }
+
+        /* Button Arrangement with Proper Spacing */
+        .button-group {
+            @apply flex justify-center gap-8 mt-8; /* Increased gap to 2rem (8) and margin-top to 2rem (8) for proper distance */
+        }
+
+        .footer {
+            @apply text-center p-4 text-gray-600 text-sm mt-8;
+        }
+
+        .link {
+            @apply text-[#d4a017] underline hover:text-[#ffd700];
+        }
+
+        /* Additional Enhanced Styling (Preserving Existing CSS) */
+        body {
+            background-color: #f1f3f6;
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            background: #2874f0;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            position: relative;
+            animation: fadeInDown 1s ease-in;
+        }
+
+        .header h1 {
+            font-size: 24px;
+            font-weight: 500;
+            margin: 0;
+        }
+
+        .content {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
+            animation: fadeIn 1s ease-in;
+        }
+
+        .form-header {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            color: #d4a017; /* Gold for Paithani elegance */
+            font-family: 'Pacifico', cursive;
+            font-size: 2rem;
+            font-weight: 400;
+            text-shadow: 0 2px 4px rgba(212, 160, 23, 0.3);
+            animation: bounceIn 1.5s ease-in-out;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .label {
+            color: #212121;
+            font-size: 16px;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            font-size: 16px;
+            box-sizing: border-box;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .input-field:focus {
+            border-color: #d4a017;
+            outline: none;
+            box-shadow: 0 0 6px rgba(212, 160, 23, 0.3);
+        }
+
+        .error {
+            color: #e53e3e;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        .btn {
+            background: linear-gradient(to right, #d4a017, #ffd700); /* Gold gradient for buttons */
+            color: white;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+            border: none;
+            cursor: pointer;
+            position: relative;
+            z-index: 1;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>') repeat;
+            opacity: 0.1;
+            z-index: -1;
+        }
+
+        .btn:hover {
+            background: linear-gradient(to right, #c68e17, #e6b800);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 18px rgba(212, 160, 23, 0.4);
+        }
+
+        .btn-cancel {
+            background: linear-gradient(to right, #a9a9a9, #d3d3d3); /* Light gray gradient for Cancel */
+            color: #4a5568;
+            margin-left: 0.5rem;
+        }
+
+        .btn-cancel:hover {
+            background: linear-gradient(to right, #808080, #b0b0b0);
+            box-shadow: 0 4px 10px rgba(169, 169, 169, 0.3);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 1rem;
+            color: #878787; /* Gray text, matching other pages */
+            font-size: 0.875rem;
+            margin-top: 2rem;
+        }
+
+        .link {
+            color: #d4a017; /* Gold link for Paithani theme */
+            text-decoration: underline;
+        }
+
+        .link:hover {
+            color: #ffd700;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes bounceIn {
+            0% { transform: scale(0.8); opacity: 0; }
+            50% { transform: scale(1.1); opacity: 1; }
+            70% { transform: scale(0.95); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+    <header class="header">
+        <h1>🧵 Paithani Marketplace</h1>
+    </header>
+
+    <main class="flex-grow">
+        <div class="container">
+            <div class="content">
+                <h2 class="form-header">Add New Shop</h2>
+
+                <% if (error) { %>
+                    <p class="error"><%= error %></p>
+                <% } %>
+
+                <form method="POST" action="/add-shop" enctype="multipart/form-data" class="space-y-4">
+                    <div class="form-group">
+                        <label for="name" class="label">Shop Name</label>
+                        <input type="text" id="name" name="name" class="input-field" value="<%= values.name || '' %>" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="ownerName" class="label">Owner Name or Email</label>
+                        <input type="text" id="ownerName" name="ownerName" class="input-field" value="<%= values.ownerName || '' %>" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="place" class="label">Place</label>
+                        <input type="text" id="place" name="place" class="input-field" value="<%= values.place || '' %>" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="description" class="label">Description (Optional)</label>
+                        <textarea id="description" name="description" class="input-field" placeholder="Describe your shop..."><%= values.description || '' %></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="contact" class="label">Contact (Email or Phone)</label>
+                        <input type="text" id="contact" name="contact" class="input-field" value="<%= values.contact || '' %>" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="gender" class="label">Owner Gender</label>
+                        <select id="gender" name="gender" class="input-field" required>
+                            <option value="Male" <%= values.gender === 'Male' ? 'selected' : '' %>>Male</option>
+                            <option value="Female" <%= values.gender === 'Female' ? 'selected' : '' %>>Female</option>
+                            <option value="Other" <%= values.gender === 'Other' ? 'selected' : '' %>>Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="image" class="label">Shop Image (Optional)</label>
+                        <input type="file" id="image" name="image" class="input-field" accept="image/*">
+                    </div>
+                    <div class="button-group">
+                        <button type="submit" class="btn">Add Shop</button>
+                        <a href="/seller-shops" class="btn btn-cancel">Cancel</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Paithani Marketplace | <a href="#" class="link">Contact Us</a> | <a href="#" class="link">Terms of Use</a></p>
+    </footer>
+</body>
+</html>
